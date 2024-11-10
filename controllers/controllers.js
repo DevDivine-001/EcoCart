@@ -1,6 +1,7 @@
 import bcryptjs from "bcryptjs"
 import { User } from "../model/UserModel.js"
 import { generateTokenCookie } from "../utils/GenerateTokenCookie.js"
+import { verify } from "jsonwebtoken"
 
 // create a user
 export const Signup = async (req, res) => {
@@ -23,6 +24,16 @@ export const Signup = async (req, res) => {
     } catch (error) {
 
         res.status(400).json({ success: false, message: error.message })
+    }
+}
+
+// verify User Email verifyEmail
+
+export const verifyEmail = async (req, res) => {
+    try {
+
+    } catch (error) {
+
     }
 }
 
@@ -62,14 +73,6 @@ export const LogIn = async (req, res) => {
 }
 
 // Logout User
-
-export const verifyEmail = async (req, res) => {
-    try {
-
-    } catch (error) {
-
-    }
-}
 
 export const LogOut = async (req, res) => {
     res.clearCookie("token")

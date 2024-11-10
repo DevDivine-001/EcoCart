@@ -14,14 +14,21 @@ app.use(express.json());
 
 app.use(cors())
 app.use(morgan("tiny"))
+app.disable("x-powered-by")
 
 app.use("/api/auth", authRouter)
 
+// Checking your browser endpoint 
+app.get("/", (req, res) => {
+    res.status(201).json("WleCome")
+
+    req.url()
+});
 
 const server = app.listen(PORT, () => {
     console.log("Sever is Up and running in PORT 4000 🏀🏀🏀❤️❤️", PORT)
     DatabaseDB()
-})
+});
 
 process.on("uncaughtException", (error) => {
     console.error("Uncaught exception, shutting down...", error);
